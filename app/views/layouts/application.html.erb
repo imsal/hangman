@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hangman</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+<!--
+    <div class="header">
+      <p class="align-left">Wins: <%= session[:games_won] %></p>
+      <p class="align-right">Losses: <%= session[:games_lost] %></p>
+    </div>
+
+    <div style="clear: both;"></div>
+-->
+    <div class="content">
+      <%= yield %>
+    </div>
+
+  </body>
+
+</html>

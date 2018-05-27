@@ -1,0 +1,60 @@
+<div class="show-game">
+
+  <!-- Left Column -->
+  <div class="left-column">
+    <%= image_tag @png, class: 'hangman-image' %>
+  </div>
+
+  <!-- Right Column -->
+  <div class="right-column">
+
+    <h1 class="main-word"><%= @main_word %></h1>
+
+    <div class="correct-word">
+      <% if @game_status == 'defeated' %>
+        <h2>The correct answer:
+          <a href="http://www.google.com/search?q=<%= @game.word.capitalize %>" target="_blank"><%= @game.word.capitalize %></a>
+        </h2>
+        <h4>Wins: <%= session[:games_won] %> ~ Losses: <%= session[:games_lost] %></h4>
+
+      <% end %>
+
+      <% if @game_status == 'victory' %>
+        <h2>You guessed it:
+          <a href="http://www.google.com/search?q=<%= @game.word.capitalize %>" target="_blank"><%= @game.word.capitalize %></a>
+        </h2>
+
+        <h4>Wins: <%= session[:games_won] %> | Losses: <%= session[:games_lost] %></h4>
+      <% end %>
+    </div>
+
+    <h2 class="<%= @game_status %>">
+      <% if ( @game_status == 'victory' ) || ( @game_status == 'defeated' ) %>
+        <%= link_to 'Play again', new_game_path %>
+        ?
+      <% end %>
+    </h2>
+  </div>
+
+  <div style="clear: both;"></div>
+
+
+  <!-- Alphabet Links -->
+
+    <div class="letter-block <%= @game_status %>">
+      <% ('A'..'Z').to_a.each do |letter| %>
+
+        <% if !@game.letter_guesses.split('').include?(letter) %>
+          <%= link_to letter, guess_path(user_guessed_letter: letter), method: :post %>
+        <% else %>
+          <a class="clicked"><%= letter %></a>
+        <% end %>
+
+      <% end %>
+    </div>
+
+    
+
+</div>
+
+<!-- .show-game -->

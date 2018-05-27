@@ -1,0 +1,217 @@
+
+$main-padding: 15px;
+$button-normal-color: #90BDD1;
+$button-hover-color: #6E91A1;
+
+
+body,
+html {
+  margin: 0;
+}
+
+body {
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+
+ol,
+p,
+td,
+ul {
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+
+// ~~~~~~~~~~ Content ~~~~~~~~~~
+
+.content {
+  padding: $main-padding;
+  width: 100%;
+  height: 100%;
+}
+// ~~~~~~~~~~ New ~~~~~~~~~~
+
+.new-game {
+  // centers div horizontally and vertically
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  h1 {
+    text-align: center;
+    font-size: 3em;
+  }
+
+  .field {
+    text-align: center;
+
+    input[type=text] {
+      padding: 20px;
+      font-size: 16px;
+      width: 45%;
+      -webkit-transition: width 0.35s ease-in-out;
+      transition: width 0.35s ease-in-out;
+
+      &:focus {
+        width: 65%;
+      }
+    }
+
+    .button {
+      background-color: $button-normal-color;
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+
+      &:hover {
+        background-color: $button-hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+
+// ~~~~~~~~~~ Show Game ~~~~~~~~~~
+.show-game {
+  width: 100%;
+
+  // for equal height columns
+  align-items: center;
+
+  // // centers div horizontally and vertically
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .left-column {
+    width: 50%;
+    float: left;
+    flex: 1;
+
+    .hangman-image {
+      width: 60%;
+      margin: auto;
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .right-column {
+    width: 50%;
+    float: right;
+    align-items: center;
+
+    // word field with dashes
+    h1.main-word {
+      font-size: 3em;
+      letter-spacing: 20px;
+      text-align: center;
+    }
+    // the correct word being guessed
+    .correct-word {
+      h2 {
+        font-size: 1.5em;
+        text-align: center;
+
+        a {
+          color: $button-hover-color;
+          text-decoration: none;
+
+          &:hover {
+            color: #4D6874;
+          }
+        }
+      }
+
+      h4 {
+        text-align: center;
+      }
+    }
+    // Play again links
+    h2.defeated,
+    h2.victory {
+      font-size: 1.5em;
+      text-align: center;
+
+      a {
+        color: $button-hover-color;
+        text-decoration: none;
+
+        &:hover {
+          color: #4D6874;
+        }
+      }
+    }
+  }
+
+    // hides bottom aplhabet buttons
+    div.defeated,
+    div.victory {
+      display: none;
+    }
+
+    // Alphabet
+    .letter-block {
+      clear: both;
+
+      margin: 60px auto auto;
+      width: 75%;
+      display: block;
+
+      a {
+        margin: 6px;
+        text-decoration: none;
+        background-color: $button-normal-color;
+        color: white;
+        font-size: 30px;
+        display: inline-block;
+        text-align: center;
+        line-height: 80px;
+        width: 80px;
+        height: 80px;
+
+        &:hover {
+          text-decoration: none;
+          background-color: $button-hover-color;
+          color: white;
+        }
+      }
+
+      .clicked {
+        background-color: #8C8787; //gray;
+
+        &:hover {
+          background-color: #8C8787; //gray;
+        }
+      }
+    }
+
+} // .show-game
+
+
+// ~~~~~~~~~~ Error ~~~~~~~~~~
+.error_explanation {
+  text-align: center;
+
+  h4 {
+    text-decoration: underline;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+div.field_with_errors {
+  display: inline;
+}

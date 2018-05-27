@@ -1,0 +1,43 @@
+<div class="new-game">
+
+<h1>Hangman: New Game</h1>
+
+<%= form_with(model: @game, local: true) do |form| %>
+  <% if @game.errors.any? %>
+    <div class="error_explanation">
+      <h4>Oops, there was an error</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :word, id: :game_word, placeholder: 'Enter a word' %>
+    <%= form.submit 'Submit', class: 'button' %>
+  </div>
+
+<% end %>
+
+
+
+<p class="or">OR</p>
+
+
+
+
+
+<%= form_with(model: @game, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.hidden_field :word, id: :game_word %>
+    <%= form.submit 'Play a random word', class: 'button' %>
+  </div>
+
+<% end %>
+
+
+</div>
